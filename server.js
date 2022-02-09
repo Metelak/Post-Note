@@ -32,23 +32,27 @@ function confirmNotes(notes) {
     return true;
 }
 
-// routing api/notes to read/return using json file
-app.post('/api/notes', (req, res) => {
-    req.body.id = notes.length.toString();
-    console.log('new note received!');
-    const newNote = addNote(req.body, notes);
-    res.json(addNote);
-});
+// app.get('/', (req, res) => {
+//     res.json({
+//         message: 'Hello World'
+//     });
+// });
 
 app.get('/api/notes', (req, res) => {
     let result = notes;
     if (result) {
         res.json(result);
-    } else {
-        res.send(404);
     }
-    
 });
+
+// routing api/notes to read/return using json file
+app.post('/api/notes', (req, res) => {
+    // req.body.id = notes.length.toString();
+    console.log('new note received!');
+    const newNote = addNote(req.body, notes);
+    res.json(addNote);
+});
+
 // read all notes from json file and remove note with given id property
 app.delete('/api/notes/:id', (req, res) => {
     const { id } = req.params;
@@ -68,16 +72,22 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notes.html'));
-});
+// app.get('/notes', (req, res) => {
+//     res.sendFile(path.join(__dirname, './public/notes.html'));
+// });
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+    res.status(404).end();
+});
 
-module.exports = app;
+
+// module.exports = app;
+
 // the app is listening to the port variable defined
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
