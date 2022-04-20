@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 });
 
 // returns `notes.html` page.
-router.get("/notes", (req, res) => {
+router.get("/api/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "../../public/notes.html"));
 });
 

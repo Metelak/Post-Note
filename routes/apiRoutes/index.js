@@ -9,12 +9,12 @@ const uniqid = require("uniqid");
 const { notes } = require("../../db/db.json");
 
 // GET route '/notes' returns stored notes
-router.get("/notes", (req, res) => {
+router.get("/api/notes", (req, res) => {
   res.json(notes);
 });
 
 // POST route add a new user note
-router.post("/notes", (req, res) => {
+router.post("/api/notes", (req, res) => {
 
   let note = req.body;
 
@@ -36,7 +36,7 @@ router.post("/notes", (req, res) => {
 });
 
 // DELETE route to remove note from page
-router.delete("/notes/:id", (req, res) => {
+router.delete("/api/notes/:id", (req, res) => {
     const id = req.params.id;
   
     const isolateNote = notes.filter(note => note.id === id);
