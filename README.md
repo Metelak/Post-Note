@@ -8,7 +8,7 @@ A Note Taker that can be used to write and save notes. This application will use
 
 ## Project Links:
 * [Deployed application URL](https://post-note.herokuapp.com/)
-* [GitHub deployed page](https://git.heroku.com/post-note.git)
+* [GitHub deployed page](https://metelak.github.io/Post-Note/)
 * [GitHub Repo](https://github.com/Metelak/Post-Note)
 
 ## Resources:
