@@ -32,25 +32,17 @@ function confirmNotes(notes) {
     return true;
 }
 
-// app.get('/', (req, res) => {
-//     res.json({
-//         message: 'Hello World'
-//     });
-// });
+// routing api/notes to read/return using json file
+app.post('/api/notes', (req, res) => {
+  // req.body.id = notes.length.toString();
+  console.log('new note received!');
+  const newNote = addNote(req.body, notes);
+  res.json(newNote);
+});
 
 app.get('/api/notes', (req, res) => {
     let result = notes;
-    if (result) {
         res.json(result);
-    }
-});
-
-// routing api/notes to read/return using json file
-app.post('/api/notes', (req, res) => {
-    // req.body.id = notes.length.toString();
-    console.log('new note received!');
-    const newNote = addNote(req.body, notes);
-    res.json(addNote);
 });
 
 // read all notes from json file and remove note with given id property
@@ -81,12 +73,12 @@ app.get('*', (req, res) => {
 });
 
 // Default response for any other request (Not Found)
-app.use((req, res) => {
-    res.status(404).end();
-});
+// app.use((req, res) => {
+//     res.status(404).end();
+// });
 
 
-// module.exports = app;
+module.exports = app;
 
 // the app is listening to the port variable defined
 app.listen(PORT, () => {
